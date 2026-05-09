@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login - Adopción de Mascotas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Iniciar Sesión</h1>
+        
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit" class="btn">Ingresar</button>
+        </form>
+        
+        <div id="message" class="error" style="display:none;"></div>
+        
+        <div class="menu">
+            <a href="/" class="btn secondary">Volver al inicio</a>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('loginForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({username, password})
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('username', data.username);
+                    localStorage.setItem('role', data.role);
+                    
+                    if (data.role === 'ADMIN') {
+                        window.location.href = '/dashboard';
+                    } else {
+                        window.location.href = '/catalog';
+                    }
+                } else {
+                    document.getElementById('message').style.display = 'block';
+                    document.getElementById('message').textContent = data.error || 'Error al iniciar sesión';
+                }
+            } catch (error) {
+                document.getElementById('message').style.display = 'block';
+                document.getElementById('message').textContent = 'Error de conexión';
+            }
+        };
+    </script>
+</body>
+</html>

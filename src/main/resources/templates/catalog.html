@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Catálogo de Mascotas</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>🐕 Mascotas Disponibles para Adopción 🐈</h1>
+        
+        <div class="search-form">
+            <form action="/search" method="get">
+                <input type="text" name="species" placeholder="Especie" th:value="${species}">
+                <input type="text" name="breed" placeholder="Raza" th:value="${breed}">
+                <input type="number" name="age" placeholder="Edad" th:value="${age}">
+                <select name="gender">
+                    <option value="">Género</option>
+                    <option value="Macho" th:selected="${gender == 'Macho'}">Macho</option>
+                    <option value="Hembra" th:selected="${gender == 'Hembra'}">Hembra</option>
+                </select>
+                <input type="text" name="location" placeholder="Ubicación" th:value="${location}">
+                <button type="submit" class="btn">Buscar</button>
+            </form>
+        </div>
+        
+        <div class="pets-grid">
+            <div th:each="pet : ${pets}" class="pet-card">
+                <h3 th:text="${pet.name}"></h3>
+                <p><strong>🐾 Especie:</strong> <span th:text="${pet.species}"></span></p>
+                <p><strong>🐕 Raza:</strong> <span th:text="${pet.breed}"></span></p>
+                <p><strong>📅 Edad:</strong> <span th:text="${pet.age}"></span> años</p>
+                <p><strong>⚥ Género:</strong> <span th:text="${pet.gender}"></span></p>
+                <p><strong>📍 Ubicación:</strong> <span th:text="${pet.location}"></span></p>
+                <p class="description" th:text="${pet.description}"></p>
+            </div>
+        </div>
+        
+        <div th:if="${pets.empty}" class="no-results">
+            <p>😢 No hay mascotas disponibles en este momento.</p>
+        </div>
+        
+        <div class="menu">
+            <a href="/" class="btn secondary">Volver al inicio</a>
+            <a href="#" onclick="logout()" class="btn danger">Cerrar Sesión</a>
+        </div>
+    </div>
+    
+    <script>
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login';
+        }
+        
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
