@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+mascotas,com.adopcion.mascotas.config,DataLoader,148,16,2,2,21,4,2,2,0,2
+mascotas,com.adopcion.mascotas.config,JwtFilter,105,3,24,0,28,1,13,1,1,1
+mascotas,com.adopcion.mascotas.config,SecurityConfig,0,128,0,0,0,15,0,7,0,7
+mascotas,com.adopcion.mascotas.config,JwtUtil,0,53,0,0,0,21,0,5,0,5
+mascotas,com.adopcion.mascotas.controller,AuthController,0,75,0,4,0,14,0,4,0,2
+mascotas,com.adopcion.mascotas.controller,HomeController,88,3,0,0,21,1,9,1,9,1
+mascotas,com.adopcion.mascotas.controller,PetController,0,55,0,4,0,10,0,9,0,7
+mascotas,com.adopcion.mascotas.service,CustomUserDetailsService,30,3,0,0,6,1,2,1,2,1
+mascotas,com.adopcion.mascotas.service,PetService,0,90,0,2,0,21,0,9,0,8
+mascotas,com.adopcion.mascotas.service,UserService,0,29,0,0,0,5,0,4,0,4
+mascotas,com.adopcion.mascotas.model,Pet,37,79,0,0,12,34,3,21,3,21
+mascotas,com.adopcion.mascotas.model,User,25,47,0,0,11,17,7,7,7,7
+mascotas,com.adopcion.mascotas,MascotasApplication,5,3,0,0,2,1,1,1,1,1

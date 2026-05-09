@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gestionar Mascota</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${pet.id == null ? '➕ Agregar Nueva Mascota' : '✏️ Editar Mascota'}"></h1>
+        
+        <form th:action="@{/pets/save}" th:object="${pet}" method="post">
+            <input type="hidden" th:field="*{id}">
+            
+            <input type="text" th:field="*{name}" placeholder="Nombre de la mascota" required>
+            <input type="text" th:field="*{species}" placeholder="Especie (Perro, Gato, etc.)" required>
+            <input type="text" th:field="*{breed}" placeholder="Raza">
+            <input type="number" th:field="*{age}" placeholder="Edad" required>
+            
+            <select th:field="*{gender}" required>
+                <option value="">Seleccionar género</option>
+                <option value="Macho">Macho</option>
+                <option value="Hembra">Hembra</option>
+            </select>
+            
+            <input type="text" th:field="*{location}" placeholder="Ubicación (ciudad)">
+            <textarea th:field="*{description}" placeholder="Descripción de la mascota" rows="4"></textarea>
+            
+            <button type="submit" class="btn">💾 Guardar Mascota</button>
+        </form>
+        
+        <div class="menu">
+            <a href="/dashboard" class="btn secondary">Volver al Dashboard</a>
+        </div>
+    </div>
+    
+    <script>
+        const token = localStorage.getItem('token');
+        const role = localStorage.getItem('role');
+        
+        if (!token || role !== 'ADMIN') {
+            window.location.href = '/login';
+        }
+    </script>
+</body>
+</html>

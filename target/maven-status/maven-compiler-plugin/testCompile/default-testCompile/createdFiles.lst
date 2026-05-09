@@ -1,0 +1,6 @@
+com\adopcion\mascotas\config\JwtUtilTest.class
+com\adopcion\mascotas\controller\PetControllerTest.class
+com\adopcion\mascotas\MascotasApplicationTests.class
+com\adopcion\mascotas\service\PetServiceTest.class
+com\adopcion\mascotas\controller\AuthControllerTest.class
+com\adopcion\mascotas\service\UserServiceTest.class

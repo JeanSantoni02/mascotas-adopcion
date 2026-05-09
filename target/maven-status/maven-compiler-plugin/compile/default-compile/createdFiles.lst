@@ -1,0 +1,15 @@
+com\adopcion\mascotas\MascotasApplication.class
+com\adopcion\mascotas\service\PetService.class
+com\adopcion\mascotas\controller\HomeController.class
+com\adopcion\mascotas\config\JwtFilter.class
+com\adopcion\mascotas\repository\PetRepository.class
+com\adopcion\mascotas\controller\AuthController.class
+com\adopcion\mascotas\model\User.class
+com\adopcion\mascotas\service\CustomUserDetailsService.class
+com\adopcion\mascotas\config\JwtUtil.class
+com\adopcion\mascotas\repository\UserRepository.class
+com\adopcion\mascotas\config\SecurityConfig.class
+com\adopcion\mascotas\controller\PetController.class
+com\adopcion\mascotas\config\DataLoader.class
+com\adopcion\mascotas\model\Pet.class
+com\adopcion\mascotas\service\UserService.class

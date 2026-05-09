@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>👑 Panel de Administración</h1>
+        <p style="color: white; text-align: center; font-size: 1.2rem;">
+            Bienvenido, <span id="username"></span> (Administrador)
+        </p>
+        
+        <div class="menu">
+            <a href="/catalog" class="btn">Ver Catálogo</a>
+            <a href="/pets/new" class="btn">➕ Agregar Mascota</a>
+            <a href="#" onclick="logout()" class="btn danger">🚪 Cerrar Sesión</a>
+        </div>
+    </div>
+    
+    <script>
+        const username = localStorage.getItem('username');
+        const role = localStorage.getItem('role');
+        const token = localStorage.getItem('token');
+        
+        if (!token || role !== 'ADMIN') {
+            window.location.href = '/login';
+        }
+        
+        document.getElementById('username').textContent = username;
+        
+        function logout() {
+            localStorage.clear();
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
